@@ -67,13 +67,20 @@ def update_rating():
     )
         print("Rating successfully updated!")
     except Exception as e:
-        print("Error in updating movie rating: {e}")
+        print(f"Error in updating movie rating: {e}")
 
 def delete_movie():
     """
     Prompt user for a Movie Title.
     Delete that item from the database."""
-    print("delete movie")
+    title = input("What is the movie title? ")
+    try:
+        table.delete_item(
+        Key={"Title": title}
+    )
+        print(f"Movie {title} successfully deleted!")
+    except Exception as e:
+        print(f"Error in deleting movie: {e}")
 
 def query_movie():
     """
